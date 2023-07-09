@@ -11,18 +11,20 @@
    '# subnet set --dns-nameserver 8.8.8.8 test-subnet
    '# network set --share external
    '# network set --share test
-3. Common default ports already been taken by OpenStack. Port forwarding is needed is standard port is to be used within the instance.
+   '# sysctl net.ipv4.ip_forward=1
+   
+4. Common default ports already been taken by OpenStack. Port forwarding is needed is standard port is to be used within the instance.
    a. Setup host machine port forwarding
        sudo iptables -t nat -A POSTROUTING -s 10.20.20.1/24 ! -d 10.20.20.1/24 -j MASQUERADE
        sudo iptables -t nat -A PREROUTING -p tcp --dport 8090 -j DNAT --to-destination 10.20.20.80:8090
        sudo iptables -t nat -A POSTROUTING ! -o lo -j MASQUERADE
-4. To open port in OpenStack's instance
+5. To open port in OpenStack's instance
    Browse to network > security groups
    select the implemented rules
    click on "Manage Rules"
    Add the rule (Ingress and/or Egress depending on requirement)
 
-5. To retrieve Microstack default password
+6. To retrieve Microstack default password
    sudo snap get microstack config.credentials.keystone-password
    sudo vim /var/snap/microstack/common/etc/microstack.rc -> update the password
 
