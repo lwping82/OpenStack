@@ -22,6 +22,9 @@
    click on "Manage Rules"
    Add the rule (Ingress and/or Egress depending on requirement)
 
+5. To retrieve Microstack default password
+   sudo snap get microstack config.credentials.keystone-password
+
 # Create a service that is always listening in host machine
 1. sudo vim /etc/systemd/system/listen-8090.service
 2. Place below into the file
