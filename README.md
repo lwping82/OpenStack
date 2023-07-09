@@ -24,6 +24,7 @@
 
 5. To retrieve Microstack default password
    sudo snap get microstack config.credentials.keystone-password
+   sudo vim /var/snap/microstack/common/etc/microstack.rc -> update the password
 
 # Create a service that is always listening in host machine
 1. sudo vim /etc/systemd/system/listen-8090.service
